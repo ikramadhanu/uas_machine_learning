@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 import pandas as pd
 
+# Sidebar
 with st.sidebar:
     selected = option_menu("Algorithm", 
         ["SUPPORT VECTOR MACHINE", "PERCEPTRON", "LOGISTIC REGRESSION"], 
@@ -13,13 +14,16 @@ with st.sidebar:
 if (selected=="SUPPORT VECTOR MACHINE"):
     st.title("SUPPORT VECTOR MACHINE")
     st.divider()
+
+    # SVM Fish
     st.title('FISH CLASSIFICATION')
     length = st.number_input("Length")
     weight = st.number_input("Weight")
     w_l_ratio = st.number_input("w_l_ratio")
     fish = st.button("Predict Fish")
+
     if fish:
-        with open('Model/svm_fish.pickle', "rb") as r:
+        with open('Model/svm_fish.pickle', "rb") as r:      # Load model
             svc = pickle.load(r)
         new_data = {
             'length' : [length],
@@ -53,6 +57,7 @@ if (selected=="SUPPORT VECTOR MACHINE"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # SVM Pumpkin
     st.title('PUMPKIN CLASSIFICATION')
     Area = st.number_input('Area')
     Perimeter = st.number_input('Perimeter')
@@ -67,8 +72,9 @@ if (selected=="SUPPORT VECTOR MACHINE"):
     Aspect_Ration = st.number_input('Aspect_Ration')
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
+
     if pumpkin:
-        with open('Model/svm_pumpkin.pickle', "rb") as r:
+        with open('Model/svm_pumpkin.pickle', "rb") as r:   # Load Model
             svc = pickle.load(r)
         new_data = {											
             'Area' : [Area],
@@ -97,6 +103,7 @@ if (selected=="SUPPORT VECTOR MACHINE"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # SVM Fruit
     st.title('FRUIT CLASSIFICATION')
     diameter = st.number_input('diameter')
     weight = st.number_input('weight')
@@ -106,7 +113,7 @@ if (selected=="SUPPORT VECTOR MACHINE"):
     fruit = st.button("Predict Fruit")
 
     if fruit:
-        with open('Model/svm_fruit.pickle', "rb") as r:
+        with open('Model/svm_fruit.pickle', "rb") as r: # Load Model
             svc = pickle.load(r)
         new_data = {
             'diameter' : [diameter],
@@ -132,13 +139,16 @@ if (selected=="SUPPORT VECTOR MACHINE"):
 if (selected=="PERCEPTRON"):
     st.title("PERCEPTRON")
     st.divider()
+
+    # Perceptron Fish
     st.title('FISH CLASSIFICATION')
     length = st.number_input("Length")
     weight = st.number_input("Weight")
     w_l_ratio = st.number_input("w_l_ratio")
     fish = st.button("Predict Fish")
+
     if fish:
-        with open('Model/perceptron_fish.pickle', "rb") as r:
+        with open('Model/perceptron_fish.pickle', "rb") as r:   # Load Model
             perceptron = pickle.load(r)
         new_data = {
             'length' : [length],
@@ -172,6 +182,7 @@ if (selected=="PERCEPTRON"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # Perceptron Pumpkin
     st.title('PUMPKIN CLASSIFICATION')
     Area = st.number_input('Area')
     Perimeter = st.number_input('Perimeter')
@@ -186,8 +197,9 @@ if (selected=="PERCEPTRON"):
     Aspect_Ration = st.number_input('Aspect_Ration')
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
+
     if pumpkin:
-        with open('Model/perceptron_pumpkin.pickle', "rb") as r:
+        with open('Model/perceptron_pumpkin.pickle', "rb") as r:    # Load Model
             perceptron = pickle.load(r)
         new_data = {											
             'Area' : [Area],
@@ -216,6 +228,7 @@ if (selected=="PERCEPTRON"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # Perceptron Fruit
     st.title('FRUIT CLASSIFICATION')
     diameter = st.number_input('diameter')
     weight = st.number_input('weight')
@@ -225,7 +238,7 @@ if (selected=="PERCEPTRON"):
     fruit = st.button("Predict Fruit")
     
     if fruit:
-        with open('Model/perceptron_fruit.pickle', "rb") as r:
+        with open('Model/perceptron_fruit.pickle', "rb") as r:  # Load Model
             perceptron = pickle.load(r)
         new_data = {
             'diameter' : [diameter],
@@ -251,13 +264,16 @@ if (selected=="PERCEPTRON"):
 if (selected=="LOGISTIC REGRESSION"):
     st.title("LOGISTIC REGRESSION")
     st.divider()
+
+    # Logistic Fish
     st.title('FISH CLASSIFICATION')
     length = st.number_input("Length")
     weight = st.number_input("Weight")
     w_l_ratio = st.number_input("w_l_ratio")
     fish = st.button("Predict Fish")
+
     if fish:
-        with open('Model/logistic_fish.pickle', "rb") as r:
+        with open('Model/logistic_fish.pickle', "rb") as r: # Load Model
             log = pickle.load(r)
         new_data = {
             'length' : [length],
@@ -291,6 +307,7 @@ if (selected=="LOGISTIC REGRESSION"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # Logistic Pumpkin
     st.title('PUMPKIN CLASSIFICATION')
     Area = st.number_input('Area')
     Perimeter = st.number_input('Perimeter')
@@ -305,8 +322,9 @@ if (selected=="LOGISTIC REGRESSION"):
     Aspect_Ration = st.number_input('Aspect_Ration')
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
+
     if pumpkin:
-        with open('Model/logistic_pumpkin.pickle', "rb") as r:
+        with open('Model/logistic_pumpkin.pickle', "rb") as r:  # Load Model
             log = pickle.load(r)
         new_data = {											
             'Area' : [Area],
@@ -335,6 +353,7 @@ if (selected=="LOGISTIC REGRESSION"):
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
+    # Logistic Fruit
     st.title('FRUIT CLASSIFICATION')
     diameter = st.number_input('diameter')
     weight = st.number_input('weight')
@@ -342,8 +361,9 @@ if (selected=="LOGISTIC REGRESSION"):
     green = st.slider('green', 0, 255)
     blue = st.slider('blue', 0, 255)
     fruit = st.button("Predict Fruit")
+
     if fruit:
-        with open('Model/logistic_fruit.pickle', "rb") as r:
+        with open('Model/logistic_fruit.pickle', "rb") as r: # Load Model
             log = pickle.load(r)
         new_data = {
             'diameter' : [diameter],
