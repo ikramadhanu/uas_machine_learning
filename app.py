@@ -68,7 +68,33 @@ if (selected=="SUPPORT VECTOR MACHINE"):
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
     if pumpkin:
-        st.success('PREDICTION : ')
+        with open('Model/svm_pumpkin.pickle', "rb") as r:
+            svc = pickle.load(r)
+        new_data = {											
+            'Area' : [Area],
+            'Perimeter' : [Perimeter],
+            'Major_Axis_Length' : [Major_Axis_Length],
+            'Minor_Axis_Length' : [Minor_Axis_Length],
+            'Convex_Area' : [Convex_Area],
+            'Equiv_Diameter' : [Equiv_Diameter],
+            'Eccentricity' : [Eccentricity],
+            'Solidity' : [Solidity],
+            'Extent' : [Extent],
+            'Roundness' : [Roundness],
+            'Aspect_Ration' : [Aspect_Ration],
+            'Compactness' : [Compactness],
+        }
+        new_data = pd.DataFrame(new_data)
+        scaler = StandardScaler()
+        scaled_new_data = scaler.fit_transform(new_data)
+        new_prediction = svc.predict(new_data)
+        
+        if new_prediction[0] == 0 :
+            hasil = 'Çerçevelik'
+        else:
+            hasil = 'Ürgüp Sivrisi'
+
+        st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
     st.title('FRUIT CLASSIFICATION')
@@ -161,7 +187,33 @@ if (selected=="PERCEPTRON"):
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
     if pumpkin:
-        st.success('PREDICTION : ')
+        with open('Model/perceptron_pumpkin.pickle', "rb") as r:
+            perceptron = pickle.load(r)
+        new_data = {											
+            'Area' : [Area],
+            'Perimeter' : [Perimeter],
+            'Major_Axis_Length' : [Major_Axis_Length],
+            'Minor_Axis_Length' : [Minor_Axis_Length],
+            'Convex_Area' : [Convex_Area],
+            'Equiv_Diameter' : [Equiv_Diameter],
+            'Eccentricity' : [Eccentricity],
+            'Solidity' : [Solidity],
+            'Extent' : [Extent],
+            'Roundness' : [Roundness],
+            'Aspect_Ration' : [Aspect_Ration],
+            'Compactness' : [Compactness],
+        }
+        new_data = pd.DataFrame(new_data)
+        scaler = StandardScaler()
+        scaled_new_data = scaler.fit_transform(new_data)
+        new_prediction = perceptron.predict(new_data)
+        
+        if new_prediction[0] == 0 :
+            hasil = 'Çerçevelik'
+        else:
+            hasil = 'Ürgüp Sivrisi'
+
+        st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
     st.title('FRUIT CLASSIFICATION')
@@ -254,7 +306,33 @@ if (selected=="LOGISTIC REGRESSION"):
     Compactness = st.number_input('Compactness')
     pumpkin = st.button("Predict Pumpkin")
     if pumpkin:
-        st.success('PREDICTION : ')
+        with open('Model/logistic_pumpkin.pickle', "rb") as r:
+            log = pickle.load(r)
+        new_data = {											
+            'Area' : [Area],
+            'Perimeter' : [Perimeter],
+            'Major_Axis_Length' : [Major_Axis_Length],
+            'Minor_Axis_Length' : [Minor_Axis_Length],
+            'Convex_Area' : [Convex_Area],
+            'Equiv_Diameter' : [Equiv_Diameter],
+            'Eccentricity' : [Eccentricity],
+            'Solidity' : [Solidity],
+            'Extent' : [Extent],
+            'Roundness' : [Roundness],
+            'Aspect_Ration' : [Aspect_Ration],
+            'Compactness' : [Compactness],
+        }
+        new_data = pd.DataFrame(new_data)
+        scaler = StandardScaler()
+        scaled_new_data = scaler.fit_transform(new_data)
+        new_prediction = log.predict(new_data)
+        
+        if new_prediction[0] == 0 :
+            hasil = 'Çerçevelik'
+        else:
+            hasil = 'Ürgüp Sivrisi'
+
+        st.success('PREDICTION : {}'.format(hasil))
     st.divider()
 
     st.title('FRUIT CLASSIFICATION')
