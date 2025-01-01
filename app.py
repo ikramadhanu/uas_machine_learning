@@ -384,3 +384,5 @@ if (selected=="LOGISTIC REGRESSION"):
         
         st.success('PREDICTION : {}'.format(hasil))
     st.divider()
+
+st.write("© 2025 - Ilham Khefi Ramadhanu")
